@@ -28,6 +28,7 @@ tar zxf solr-8.8.0.tgz
 2. Create an user cl3720 with password yourpassword
 
 ```bash
+$SOLR_HOME/bin/solr start
 curl --user solr:SolrRocks http://localhost:8983/solr/admin/authentication -H 'Content-type:application/json' -d '{"set-user": {"cl3720":"yourpassword"}}'
 ```
 
@@ -75,6 +76,7 @@ SOLR_AUTHENTICATION_OPTS="-Dbasicauth=cl3720:yourpassword"
 5. Start solr (standalone mode) with security enabled.
 
 ```bash
+$SOLR_HOME/bin/solr stop
 $SOLR_HOME/bin/solr start
 ```
 
