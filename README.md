@@ -1,3 +1,9 @@
+#### install solr
+```bash
+wget https://mirror.jframeworks.com/apache/lucene/solr/8.8.0/solr-8.8.0.tgz
+tar zxf solr-8.8.0.tgz
+```
+
 #### security configuration for solr. based on solr-8.8.0
 
 1. Add a security.json in $SOLR_HOME/server/solr
@@ -22,6 +28,7 @@
 2. Create an user cl3720 with password yourpassword
 
 ```bash
+$SOLR_HOME/bin/solr start
 curl --user solr:SolrRocks http://localhost:8983/solr/admin/authentication -H 'Content-type:application/json' -d '{"set-user": {"cl3720":"yourpassword"}}'
 ```
 
@@ -66,13 +73,14 @@ SOLR_AUTH_TYPE="basic"
 SOLR_AUTHENTICATION_OPTS="-Dbasicauth=cl3720:yourpassword"
 ```
 
-5. Start solr with security enabled.
+5. Start solr (standalone mode) with security enabled.
 
 ```bash
+$SOLR_HOME/bin/solr stop
 $SOLR_HOME/bin/solr start
 ```
 
-6. Create the collection
+6. Create the collection called notes
 ```bash
 $SOLR_HOME/./bin/solr create -c notes -s 2 -rf 2
 ```
